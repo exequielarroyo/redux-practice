@@ -1,6 +1,8 @@
-import store from "./store";
-import { bugAdded, bugRemoved, bugResolved } from "./actionCreator";
-import customStore from "./customStore";
+import configStore from "./store/configStore";
+import { bugAdded, bugRemoved, bugResolved } from "./store/bugs";
+import customStore from "./store/customStore";
+
+const store = configStore();
 
 const unsubscribe = store.subscribe(() => {
   console.log("Store changed!", store.getState());
@@ -14,7 +16,7 @@ unsubscribe();
 // store.dispatch(bugRemoved(1));
 
 console.log(store.getState());
-  
+
 // customStore.subscribe(() => {
 //   console.log("Store changed!", customStore.getState());
 // });
